@@ -1,12 +1,12 @@
 public class Consultor {
     private String nome;
     private double salario;
-    private double numero_contratos;
+    private Integer numeroContratos;
 
     public Consultor(String nome, double salario) {
         this.nome = nome;
         this.salario = salario;
-        this.numero_contratos = 0;
+        this.numeroContratos = 0;
     }
 
     // Retorna o nome do consultor.
@@ -25,14 +25,14 @@ public class Consultor {
         this.salario = salario;
     } 
 
-    // Incrementa o número de contratos do consultor. A cada chamada desse método, o valor de numero_contratos é aumentado em 1
+    // Incrementa o número de contratos do consultor. A cada chamada desse método, o valor de numeroContratos é aumentado em 1
     public void incrementaContratos(){
-        this.numero_contratos++;
+        this.numeroContratos++;
     }
 
     // Calcula o valor do bônus a ser recebido pelo consultor com base no número de contratos que ele possui
     public double valorBonusContrato() {
-        double bonus = numero_contratos * 0.10;
+        double bonus = numeroContratos * 0.10;
 
         return this.salario * bonus; 
     }

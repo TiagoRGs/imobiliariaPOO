@@ -53,10 +53,12 @@ public class Imobiliaria {
         List<Double> comissoesProprietarios = new ArrayList<>();
         List<Consultor> consultores = new ArrayList<>();
         List<Imovel> imoveis = new ArrayList<>();
+        List<Cliente> clientes = new ArrayList<>();
 
 
         // Itera sobre os contratos para gerar os dados do relatórios
         for (ContratoAluguel contrato : contratos) {
+
             String proprietario = contrato.getImovel().getProprietario();
             double valorComissao = contrato.calcularValorComissao();
             Consultor consultor = contrato.getConsultor();
@@ -72,6 +74,9 @@ public class Imobiliaria {
                 consultores.add(consultor);
             }
              
+            // Adiciona clientes a lista
+            clientes.add(contrato.getCliente());
+
             // Verifica se o proprietário já existe na lista
             int index = proprietarios.indexOf(proprietario);
             if (index >= 0) {
@@ -105,9 +110,13 @@ public class Imobiliaria {
         // Itera sobre a lista de imóveis para gerar o relatório
         for (int i = 0; i < imoveis.size(); i++) {
             // Imprime o nome do proprietário, o tipo do imóvel, o valor do aluguel e a taxa da imobiliária
+
+            String tipoCliente = " (" + clientes.get(i).getTipoCliente() + ")";
+
             System.out.println(
                 (i + 1) + " - " + "Proprietário: " + imoveis.get(i).getProprietario() +
                 "\n\tTipo do imóvel: " + imoveis.get(i).getClass().getName() +
+                "\n\tCliente: "+ clientes.get(i).getNome() + tipoCliente +
                 "\n\tValor do imóvel (R$): " + imoveis.get(i).getValorAluguel() +
                  "\n\tTaxa imobiliária: R$" + imoveis.get(i).calcularComissao()); 
         }
@@ -119,6 +128,7 @@ public class Imobiliaria {
 
         // Itera sobre a lista de proprietários para gerar o relatório
         for (int i = 0; i < proprietarios.size(); i++) {
+
             // Imprime o nome do proprietário e o valor da comissão recebida
             System.out.println(
                "Proprietário: " + proprietarios.get(i) + 

@@ -82,6 +82,10 @@ public class Main {
         // Criação do objeto imóvel.
         Imovel imovel;
 
+        // Leitura do nome do proprietário.
+        System.out.print("\nDigite o nome do proprietário: ");
+        String nomeProprietario = reader.readLine();   
+
         // Leitura do valor do aluguel.
         System.out.print("Digite o valor do aluguel: ");
         double valor = Double.parseDouble(reader.readLine());
@@ -89,13 +93,13 @@ public class Main {
         // Verificação do tipo de imóvel.
         if (tipo_imovel == 1) {
             // Criação do objeto imóvel Casa.
-            imovel = new Casa(valor, nome);
+            imovel = new Casa(valor, nomeProprietario);
         } else if (tipo_imovel == 2) {
             // Criação do objeto imóvel Apartamento.
-            imovel = new Apartamento(valor, nome);
+            imovel = new Apartamento(valor, nomeProprietario);
         } else if (tipo_imovel == 3) {
             // Criação do objeto imóvel Galpão.
-            imovel = new Galpao(valor, nome);
+            imovel = new Galpao(valor, nomeProprietario);
         } else {
             // Tipo de imóvel inválido.
             System.out.println("Tipo inválido!");
